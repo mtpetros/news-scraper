@@ -1,14 +1,14 @@
 module.exports = function(app, Article) {
     app.get('/articles', function(req, res) {
         Article.find({}, function(err, doc) {
+            console.log(doc);
             if (err) {
                 throw err;
             } 
-            else if (doc = {}) {
-                res.redirect('/')
-            }
             else {
-                res.json(doc);
+                hbsObject = {article: doc};
+                console.log(hbsObject);
+                res.render('articles', hbsObject);
             }
         });
     });

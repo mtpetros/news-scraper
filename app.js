@@ -4,7 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+var exphbs = require("express-handlebars");
 
 var mongoose = require("mongoose");
 
@@ -19,8 +19,9 @@ var Article = require("./models/Article.js");
 var Comment = require("./models/Comment.js");
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+//app.set('views', path.join(__dirname, 'views'));
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set('view engine', 'handlebars');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -52,13 +53,15 @@ db.once("open", function() {
   console.log("Mongoose connection successful.");
 });
 
+//END MONGOOSE========================
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
-//END MONGOOSE========================
+
 
 // error handler
 app.use(function(err, req, res, next) {
