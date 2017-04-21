@@ -1,0 +1,25 @@
+<div class="jumbotron jumbotron-fluid text-center">
+    <h1 class="display-3">Current News</h1>
+    <p class="lead">Click on individual articles to leave comments</p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            {{#each article}}
+                <div class="article" data-id="{{this.id}}">
+                    <h1>{{this.title}}</a></h1>
+                    <p><a href="{{this.link}}">{{this.link}}</a></p>
+                </div>
+            {{/each}}
+        </div>
+        <div class="col-md-4 text-center">
+            <div id="comment">
+            </div>
+        </div>
+    </div>
+</div>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script src="javascripts/articles.js"></script>
